@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Router from "next/router";
 import { Form, Input, Button, Checkbox, message } from "antd";
 import { handleFetch } from "utils/index";
+import ButtonBack from "components/ButtonBack";
 const Register = () => {
   const handleSubmit = async (input) => {
     const { username, password, policy } = input;
@@ -26,6 +27,7 @@ const Register = () => {
   };
   return (
     <Container>
+      <ButtonBack />
       <h1>สร้างปัญชีผู้ใช้</h1>
       <WrapperRegister>
         <Form name="basic" onFinish={handleSubmit}>
@@ -84,10 +86,7 @@ const Container = styled.div`
   height: 100vh;
   margin: 0 auto;
   width: 100%;
-  max-width: 500px;
-  @media only screen and (max-width: 768px) {
-    max-width: 300px;
-  }
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,6 +98,10 @@ const WrapperRegister = styled.div`
   background-color: #ffffff;
   border: 1px solid gray;
   border-radius: 6px;
+  max-width: 500px;
+  @media only screen and (max-width: 768px) {
+    max-width: 300px;
+  }
   width: 100%;
   padding: 24px;
 `;

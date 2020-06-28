@@ -10,16 +10,14 @@ global.express = require("express");
 global.appRoot = path.resolve(__dirname);
 const handle = app.getRequestHandler();
 const port = process.env.PORT || 8080;
-db.sequelize
-  .sync
-  // ({ force: true });
-  ();
+// db.sequelize.sync({ force: true });
+db.sequelize.sync();
 app
   .prepare()
   .then(() => {
     const server = express();
-    server.use(express.json());
-    server.use(express.urlencoded({ extended: false }));
+    server.use(express.json({ limit: "50mb" }));
+    server.use(express.urlencoded({ extended: false, limit: "50mb" }));
     server.use(express.static("static"));
     glob.sync("./api/**/*.js").forEach((file) => {
       server.use((req, res, next) => {

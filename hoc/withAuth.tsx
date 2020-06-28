@@ -21,7 +21,11 @@ const withAuth = (Components) => (props) => {
     handleJWT();
   }, []);
   if (!useRender) return null;
-  return <Components {...props} />;
+  return (
+    <div>
+      <Components {...props} />;
+    </div>
+  );
 };
 
 export default withAuth;

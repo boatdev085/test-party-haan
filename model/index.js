@@ -38,5 +38,12 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.users = require("./users")(sequelize, Sequelize);
-
+db.partyList = require("./party_list")(sequelize, Sequelize);
+db.partyJoin = require("./party_join")(sequelize, Sequelize);
+db.partyList.hasMany(db.partyJoin, {
+  as: "joins",
+  foreignKey: "party_id",
+  targetKey: "id",
+});
+// require("./relation");
 module.exports = db;
