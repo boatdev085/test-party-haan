@@ -1,5 +1,5 @@
 module.exports = {
-  secret_key: "partyhaan",
+  secret_key: process.env.SECRET_KEY_JWT || "partyhaan",
   RESPONSE_SUCCESS: {
     code: 200,
     message: "success",
